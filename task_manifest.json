@@ -1,0 +1,41 @@
+{
+  "task": "intraoperative_ecg_beat_and_rhythm_transcription",
+  "input": "750 robustly-normalised samples of lead-II ECG at an effective 125 Hz",
+  "window_duration_seconds": 6.0,
+  "beat_types": [
+    "N",
+    "S",
+    "V",
+    "U"
+  ],
+  "rhythm_families": [
+    "sinus_rhythm",
+    "atrial_fibrillation_flutter",
+    "patterned_atrial_ectopy",
+    "patterned_ventricular_ectopy",
+    "sinus_node_dysfunction",
+    "atrioventricular_block",
+    "supraventricular_tachyarrhythmia",
+    "ventricular_tachyarrhythmia",
+    "wandering_multifocal_atrial_rhythm"
+  ],
+  "rare_beat_types": [
+    "V",
+    "U"
+  ],
+  "rare_rhythm_families": [
+    "atrioventricular_block",
+    "supraventricular_tachyarrhythmia",
+    "ventricular_tachyarrhythmia",
+    "wandering_multifocal_atrial_rhythm"
+  ],
+  "beat_format": "JSON list of [sample_index, beat_type], ordered by sample_index",
+  "submission_columns": [
+    "id",
+    "rhythm_family",
+    "beats"
+  ],
+  "metric": "0.20 event micro-F1 + 0.30 beat-type macro-F1 + 0.30 rhythm macro-F1 + 0.10 rare-beat macro-F1 + 0.10 rare-rhythm macro-F1",
+  "event_tolerance_samples": 10,
+  "split": "disjoint de-identified patient groups"
+}
